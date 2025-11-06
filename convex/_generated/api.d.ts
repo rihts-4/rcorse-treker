@@ -8,6 +8,7 @@
  * @module
  */
 
+import type * as courses from "../courses.js";
 import type * as messages from "../messages.js";
 
 import type {
@@ -25,6 +26,7 @@ import type {
  * ```
  */
 declare const fullApi: ApiFromModules<{
+  courses: typeof courses;
   messages: typeof messages;
 }>;
 declare const fullApiWithMounts: typeof fullApi;
