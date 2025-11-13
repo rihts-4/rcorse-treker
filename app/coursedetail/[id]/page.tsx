@@ -13,6 +13,12 @@ import { api } from "../../../convex/_generated/api";
 import { Id } from "../../../convex/_generated/dataModel";
 import { Doc } from "../../../convex/_generated/dataModel";
 
+/**
+ * Render the course detail page for the specified course.
+ *
+ * @param params - Route parameters; `params.id` is the course ID used to fetch details
+ * @returns The page's JSX rendering course metadata, ratings, reviews, and a review submission form
+ */
 export default async function CourseDetailPage({
   params,
 }: {

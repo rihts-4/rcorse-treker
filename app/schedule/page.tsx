@@ -9,6 +9,13 @@ import Header from "@/components/header";
 import { Button } from "@/components/ui/button";
 import { useMemo } from "react";
 
+/**
+ * Render the user's timetable interface with semester selection, a day/period grid, and an add/remove course modal.
+ *
+ * Fetches available courses and the user's schedule, redirects unauthenticated users to the home page, and provides UI and handlers to add or remove schedule items for specific day/period slots.
+ *
+ * @returns The React element for the timetable page.
+ */
 export default function TimetablePage() {
   const router = useRouter();
 

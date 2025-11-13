@@ -12,6 +12,14 @@ import { fetchQuery, fetchMutation } from "convex/nextjs";
 import { api } from "../../../convex/_generated/api";
 import { Id, Doc } from "../../../convex/_generated/dataModel";
 
+/**
+ * Render the professor detail page showing profile, courses, aggregated ratings, reviews, and a review submission form.
+ *
+ * Fetches professor details using the provided `params.id`. Unauthenticated users are redirected to the site root; if no professor is found, a "Professor not found." message with a link back to the professors list is rendered. When courses exist, the page includes a server action to submit a review and redirects back to this page after submission.
+ *
+ * @param params - An object (or a Promise resolving to an object) containing `id`, the professor's identifier used to load data for the page.
+ * @returns The page's React element displaying the professor profile, courses table, overall rating and distribution, review list, and an add-review form when applicable.
+ */
 export default async function ProfessorDetailPage({
   params,
 }: {
