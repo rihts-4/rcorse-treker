@@ -7,6 +7,13 @@ import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { api } from "../../convex/_generated/api";
 
+/**
+ * Renders the authenticated user's semester timetable dashboard.
+ *
+ * Displays a semester selector and a 7×5 timetable (Mon–Fri, periods 1–7) where each populated cell shows a course name and location. If authentication finishes loading and no user is present, the component redirects to the root route. When a user is available, it queries the schedule for the selected semester and maps entries to day-period cells.
+ *
+ * @returns The dashboard page as a JSX element
+ */
 export default function Home() {
   const router = useRouter();
   const { userId, isLoaded } = useAuth();

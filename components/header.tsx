@@ -2,6 +2,14 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import { SignOutButton, UserButton } from "@clerk/nextjs";
 
+/**
+ * Renders the application's top header with branding, primary navigation, and user account control.
+ *
+ * The header includes a logo and title ("Ritsurate") on the left, four navigation links (Dashboard, Courses,
+ * Professors, Schedule Builder), and a user account button on the right.
+ *
+ * @returns A JSX header element containing the logo/title, navigation links, and a user account control.
+ */
 export default function Header() {
   return (
     <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7edf3] px-10 py-3">

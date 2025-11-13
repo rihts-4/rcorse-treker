@@ -10,6 +10,14 @@ import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { api } from "../../convex/_generated/api";
 
+/**
+ * Server component that renders a searchable list of professors and their labs.
+ *
+ * Redirects unauthenticated users to "/" and shows results filtered by the optional `q` query.
+ *
+ * @param searchParams - An object (or a Promise resolving to an object) with an optional `q` string used to filter professors by name or lab.
+ * @returns The page's JSX element containing the header, search input prefilled with `q`, and a table of professors (or a "No professors found" message).
+ */
 export default async function ProfessorsPage({
   searchParams,
 }: {
