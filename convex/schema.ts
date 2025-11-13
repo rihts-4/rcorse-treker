@@ -30,6 +30,7 @@ export default defineSchema({
   professors: defineTable({
     name: v.string(),
     email: v.optional(v.string()),
+    lab: v.optional(v.string()),
   }).index("by_name", ["name"]),
 
   coursesToProfessors: defineTable({
@@ -39,6 +40,14 @@ export default defineSchema({
     .index("by_course", ["courseId"])
     .index("by_professor", ["professorId"]),
 
+  reviews: defineTable({
+    userId: v.id("users"),
+    courseId: v.id("courses"),
+    rating: v.number(),
+    comment: v.string(),
+  })
+    .index("by_course", ["courseId"])
+    .index("by_user_course", ["userId", "courseId"]),
   scheduleItems: defineTable({
     userId: v.id("users"), // Reference to Convex users table
     semester: v.string(),
