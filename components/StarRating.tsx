@@ -4,6 +4,16 @@ import { useState } from "react";
 import { Input } from "./ui/input";
 import { Star } from "lucide-react";
 
+/**
+ * Render a 5-star rating control with accessible radio-group semantics.
+ *
+ * The component displays five interactive stars that update internal selected and hover state,
+ * and includes a hidden input carrying the current rating for form submission.
+ *
+ * @param name - The name attribute for the hidden input used in form submission (default: "rating").
+ * @param value - The initial selected rating value between 1 and 5 (default: 5).
+ * @returns A React element that renders the 5-star rating widget.
+ */
 export default function StarRating({ name = "rating", value = 5 }: { name?: string; value?: number }) {
   const [rating, setRating] = useState<number>(value);
   const [hover, setHover] = useState<number>(0);

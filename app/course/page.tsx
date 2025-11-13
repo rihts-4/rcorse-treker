@@ -10,6 +10,18 @@ import { Input } from "@/components/ui/input";
 import { api } from "../../convex/_generated/api";
 import { Course } from "../lib/definitions";
 
+/**
+ * Render the authenticated Course Explorer page and its searchable course list.
+ *
+ * If the user is not authenticated this will redirect to the root path. The
+ * function accepts searchParams (either an object or a Promise resolving to one)
+ * and uses its optional `q` parameter to filter courses. Fetched courses are
+ * normalized (Convex `_id` mapped to `id`) and sorted by `courseCode` before
+ * being rendered in a responsive table with a search input.
+ *
+ * @param searchParams - An object or a Promise resolving to an object with an optional `q` search string
+ * @returns The JSX element for the Course Explorer page
+ */
 export default async function CoursePage({
   searchParams, // Receive searchParams as is
 }: {
