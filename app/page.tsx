@@ -1,25 +1,34 @@
-"use client";
+import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nextjs";
+import { redirect } from "next/navigation";
 
-import { Authenticated, Unauthenticated } from "convex/react";
-import { SignInButton, UserButton } from "@clerk/nextjs";
-import { useQuery } from "convex/react";
-import { api } from "../convex/_generated/api";
-
-export default function Home() {
-  return (
-    <>
-      <Authenticated>
-        <UserButton />
-        <Content />
-      </Authenticated>
-      <Unauthenticated>
-        <SignInButton />
-      </Unauthenticated>
-    </>
-  );
+/**
+ * Redirects the current route to the /dashboard page.
+ *
+ * @returns `null` — no UI is rendered because navigation is performed.
+ */
+function RedirectToDashboard() {
+  redirect("/dashboard");
+  // This component will not render anything as it redirects.
+  return null;
 }
 
-function Content() {
-  const messages = useQuery(api.messages.getForCurrentUser);
-  return <div>Authenticated content: {messages?.length}</div>;
+/**
+ * Render a page that redirects users based on authentication state.
+ *
+ * When the user is authenticated, navigates to `/dashboard`. When the user is not
+ * authenticated, initiates Clerk's sign-in flow.
+ *
+ * @returns A React element that conditionally triggers navigation for authenticated and unauthenticated users.
+ */
+export default function Page() {
+  return (
+    <>
+      <SignedIn>
+        <RedirectToDashboard />
+      </SignedIn>
+      <SignedOut>
+        <RedirectToSignIn />
+      </SignedOut>
+    </>
+  );
 }
